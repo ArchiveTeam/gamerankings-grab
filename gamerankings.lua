@@ -141,12 +141,12 @@ wget.callbacks.get_urls = function(file, url, is_css, iri)
   if allowed(url, nil) and status_code == 200
       and not string.match(url, "^https?://[^/]*cbsistatic.com") then
     html = read_file(file)
-    --[[if string.match(url, "/index%.html$") then
-      check(string.match(url, "^(.+)/index%.html$"))
-      for newurl in string.gmatch(html, '<a%s+href="([^"]+)"%s+target="_new">Review') do
+    if string.match(url, "/index%.html$") then
+      check(string.match(url, "^(.+/)index%.html$"))
+      --[[for newurl in string.gmatch(html, '<a%s+href="([^"]+)"%s+target="_new">Review') do
         table.insert(url, { url=newurl })
-      end
-    end]]
+      end]]
+    end
     for newurl in string.gmatch(string.gsub(html, "&quot;", '"'), '([^"]+)') do
       checknewurl(newurl)
     end
