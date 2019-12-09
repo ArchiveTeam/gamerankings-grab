@@ -180,7 +180,7 @@ wget.callbacks.httploop_result = function(url, err, http_stat)
   io.stdout:write(url_count .. "=" .. status_code .. " " .. url["url"] .. "  \n")
   io.stdout:flush()
 
-  if string.match(url["url"], "^https?://[^/]*gamerankings%.com/dummy/211388%-/$") then
+  if string.match(url["url"], "^https?://[^/]*gamerankings%.com/dummy/[0-9]+%-/$") then
     ids[string.match(url["url"], "([0-9]+)%-/$")] = true
   end
 
